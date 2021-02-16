@@ -1,6 +1,6 @@
 package com.company;
 
-public class Cat implements Actions{
+public class Cat implements Action_jump_run {
     static String name;
     private static int run_limit;
     private static int jump_limit;
@@ -11,7 +11,7 @@ public class Cat implements Actions{
      this.jump_limit = jump_limit;
     }
 
-
+@Override
     public boolean run(Treadmill treadmill){
         if (treadmill.dist<=run_limit){
             System.out.println(name+" run " + treadmill.dist);
@@ -24,6 +24,7 @@ public class Cat implements Actions{
         }
 
     }
+    @Override
     public boolean jump(Wall wall){
         if (wall.height<=jump_limit){
             System.out.println(name+" jump " + wall.height);

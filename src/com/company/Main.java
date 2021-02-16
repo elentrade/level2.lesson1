@@ -5,18 +5,16 @@ import java.util.concurrent.Callable;
 public class Main {
 
     public static void main(String[] args) {
-        Cat cat1 = new Cat("Boris",500,2);
-        Cat cat2 = new Cat("Garfild",1000,3);
-        Cat cat3 = new Cat("Stinky",400,1);
-        Human human1 = new Human("Joe",2000,1);
-        Human human2 = new Human("Sara",4000,2);
-        Human human3 = new Human("Larry",8000,3);
-        Robot robot1 = new Robot("Robocop",10000,3);
-        Robot robot2 = new Robot("Terminator",15000,5);
-        //создаем команды
-        Object [] t1 =  { human1, cat2, robot2, cat1};
+        //составляем 2 команды, как массив из объектов классов кошка, человек и робот
+        Action_jump_run [] t1 = {new Cat("Boris",500,2),
+                new Human("Joe",2000,1),
+                new Cat("Garfild",1000,3),
+                new Robot("Terminator",15000,5)};
+        Action_jump_run [] t2 = {new Cat("Stinky",400,1),
+                new Human("Sara",4000,2),
+                new Human("Larry",8000,3),
+                new Robot("Robocop",10000,3)};
         Team team1 = new Team("Team # 1",  t1);
-        Object [] t2 =  {cat3, human2, human3, robot1};
         Team team2 = new Team("Team # 2",  t2);
 //получаем массив из препятствий
          Course course = new Course();
@@ -32,36 +30,57 @@ public class Main {
                 if (current_level instanceof Treadmill) {
                     if (current_member instanceof Cat){
                         //метод выводит данные последнего созданного объекта класса, а не текущего
-                        current_member = (Cat)current_member;
-                        ((Cat) current_member).run((Treadmill)current_level);
+                        //как сделать, чтобы метод вызывался для члена команды, а не для объекта класса???
+                      if(!((Cat) current_member).run((Treadmill)current_level)){
+                          team1.team_score= team1.team_score+((Cat) current_member).getScore();
+                          break;
+                      };
+                        team1.team_score= team1.team_score+((Cat) current_member).getScore();
                     }
+
                     if (current_member instanceof Human){
-                        current_member = (Human)current_member;
-                        ((Human) current_member).run((Treadmill) current_level);
+                       if(! ((Human) current_member).run((Treadmill) current_level)){
+                           team1.team_score= team1.team_score+((Human) current_member).getScore();
+                           break;
+                       };
+                        team1.team_score= team1.team_score+((Human) current_member).getScore();
                     }
                     if (current_member instanceof Robot){
-                        current_member = (Robot)current_member;
-                        ((Robot) current_member).run((Treadmill) current_level);
+                        if (!((Robot) current_member).run((Treadmill) current_level)){
+                            team1.team_score= team1.team_score+((Robot) current_member).getScore();
+                            break;
+                        };
+                        team1.team_score= team1.team_score+((Robot) current_member).getScore();
                     }
 
                 }
                 if (current_level instanceof Wall) {
                      if (current_member instanceof Cat){
-                         current_member = (Cat)current_member;
-                         ((Cat) current_member).jump((Wall) current_level);
+                         if(!((Cat) current_member).jump((Wall) current_level)){
+                             team1.team_score= team1.team_score+((Cat) current_member).getScore();
+                             break;
+                         };
+                         team1.team_score= team1.team_score+((Cat) current_member).getScore();
                       }
                      if (current_member instanceof Human){
-                         current_member = (Human)current_member;
-                         ((Human) current_member).jump((Wall) current_level);
+                         if(!((Human) current_member).jump((Wall) current_level)){
+                             team1.team_score= team1.team_score+((Human) current_member).getScore();
+                             break;
+                         };
+                         team1.team_score= team1.team_score+((Human) current_member).getScore();
                      }
                      if (current_member instanceof Robot){
-                         current_member = (Robot)current_member;
-                         ((Robot) current_member).jump((Wall) current_level);
+                         if(!((Robot) current_member).jump((Wall) current_level)){
+                             team1.team_score= team1.team_score+((Robot) current_member).getScore();
+                             break;
+                         };
+                         team1.team_score= team1.team_score+((Robot) current_member).getScore();
                      }
                 }
 
             }
         }
+        team1.TeamResult();
 
 
 
