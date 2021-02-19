@@ -1,6 +1,6 @@
 package com.company;
 
-public class Course {
+public class Course  {
     Treadmill treadmill1 = new Treadmill(200);
     Treadmill treadmill2 = new Treadmill(500);
     Treadmill treadmill3 = new Treadmill(2000);
@@ -16,12 +16,8 @@ public class Course {
             return  c;
     }
 
-   public void Course(){
 
-   }
    //здесь надо вставить метод прохождения полосы препятствий командой. в метод передается команда
     //здесь надо вставить метод подсчета очков команды и вывод результата
-    //    public void resultCourse(Team team){
-//
-//    }
+
 }
