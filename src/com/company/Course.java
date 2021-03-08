@@ -1,6 +1,6 @@
 package com.company;
 
-public class Course {
+public class Course  {
     Treadmill treadmill1 = new Treadmill(200);
     Treadmill treadmill2 = new Treadmill(500);
     Treadmill treadmill3 = new Treadmill(2000);
@@ -11,8 +11,13 @@ public class Course {
     Wall wall3 = new Wall(3);
     Wall wall4 = new Wall(4);
     Wall wall5 = new Wall(10);
-    private Object[] course = {treadmill1, treadmill2, wall1, treadmill3, wall2, treadmill4, wall3, treadmill5,  wall4,wall5};
+    private Object[] c = {treadmill1, treadmill2, wall1, treadmill3, wall2, treadmill4, wall3, treadmill5,  wall4,wall5};
     public Object[] getCourse(){
-            return  course;
+            return  c;
     }
+
+
+   //здесь надо вставить метод прохождения полосы препятствий командой. в метод передается команда
+    //здесь надо вставить метод подсчета очков команды и вывод результата
+
 }
